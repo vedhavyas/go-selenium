@@ -1,7 +1,9 @@
-package selenium // import "sourcegraph.com/sourcegraph/go-selenium"
-import "context"
+package selenium
 
-import "io"
+import (
+	"context"
+	"io"
+)
 
 /* Element finding options */
 const (
