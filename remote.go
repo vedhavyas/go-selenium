@@ -20,6 +20,7 @@ import (
 	"os"
 	"strings"
 	"sync"
+	"time"
 )
 
 var Log = log.New(os.Stderr, "[selenium] ", log.Ltime|log.Lmicroseconds)
@@ -201,6 +202,7 @@ var httpClient = http.Client{
 		}
 		return nil
 	},
+	Timeout: time.Duration(60) * time.Second,
 }
 
 // Server reply to WebDriver command.
