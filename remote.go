@@ -205,6 +205,11 @@ var httpClient = http.Client{
 	Timeout: time.Duration(60) * time.Second,
 }
 
+// SetTimeout updates the timeout of the httpClient
+func SetTimeout(timeout time.Duration) {
+	httpClient.Timeout = timeout
+}
+
 // Server reply to WebDriver command.
 type reply struct {
 	SessionId string
