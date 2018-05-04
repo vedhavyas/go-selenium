@@ -442,11 +442,17 @@ func (wd *remoteWebDriver) find(by, value, suffix, url string) (r *reply, err er
 }
 
 func decodeElement(wd *remoteWebDriver, r *reply) WebElement {
-	var elem element
-	if err := r.readValue(&elem); err != nil {
+	m := make(map[string]string)
+	err := json.Unmarshal(r.Value, &m)
+	if err != nil {
 		panic(err.Error() + ": " + string(r.Value))
 	}
-	return &remoteWE{parent: wd, id: elem.Element}
+
+	var id string
+	for _, v := range m{
+		id = v
+	}
+	return &remoteWE{parent: wd, id: id}
 }
 
 func (wd *remoteWebDriver) FindElement(by, value string) (WebElement, error) {
